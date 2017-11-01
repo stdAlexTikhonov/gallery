@@ -4,9 +4,28 @@ define( ['text!./style.css',
 		$('<style>').html(styleCss).appendTo('head');
 		'use strict';
 		
+		function Block(measureName,value, bar) {
+			this.value = value;
+			this.measureName = measureName;
+			this.bar = bar;
+			
+		}
+		
+		Block.prototype.print = function() {
+			return `<div class="list__data-block">
+									<div class="list__data">
+											<p class="list__label">${this.measureName}</p>
+									</div>
 
-        return {
-            definition: properties,
+									<div class="list__data">
+											<p class="list__value">${this.value}</p>
+											<!-- <p class="list__label"></p> -->
+									</div>
+							</div>`;
+		}
+
+    return {
+      definition: properties,
 			initialProperties: {
 				qHyperCubeDef: {
 					qDimensions: [],
@@ -21,58 +40,49 @@ define( ['text!./style.css',
 			},
 			paint: function ( $element, layout ) {
 				$element.empty();
+				let mInfo = layout.qHyperCube.qMeasureInfo;
+
 				
-				//Определяем кто бар кто не бар
-				// var bars = layout.qHyperCube.qMeasureInfo.map(function(item) {
-				// 	return item.bar;
-				// });
-
-				// console.log(bars);
-
+				let mNames = mInfo.map((item,i) => {
+					return layout.props['mera' + i] ? layout.props['mera' + i] : mInfo[i].qFallbackTitle;
+				});
+				
+				
+				let blocks = mNames.map(item => {
+					
+				})
+			
+				
 				var qMatrix = layout.qHyperCube.qDataPages[0].qMatrix;
 
 
 				data = qMatrix.map(function (d, i) {
 
 					return {
-						"image_url": d[0] ? d[0].qText : 1,
-						"article":  d[1] ? d[1].qText : 1,
-						"title":  d[2] ? d[2].qText : 1,
-						"price": d[3] ? d[3].qText : 1,
-						"mera1": d[4] ? d[4].qText : 1,
-						"mera2": d[5] ? d[5].qText : 1,
-						"mera3": d[6] ? d[6].qText : 1,
-						"mera4": d[7] ? d[7].qText : 1,
-						"mera5": d[8] ? d[8].qText : 1,
-						"mera6": d[9] ? d[9].qText : 1,
-						"mera7": d[10] ? d[10].qText : 1,
-						"mera8": d[11] ? d[11].qText : 1,
-						"mera9": d[12] ? d[12].qText : 1,
-						"mera10": d[13] ? d[13].qText : 1,
-						"mera11": d[14] ? d[14].qText : 1,
-						"mera12": d[15] ? d[15].qText : 1
+						"image_url": d[0] ? d[0].qText : '',
+						"article":  d[1] ? d[1].qText : '',
+						"title":  d[2] ? d[2].qText : '',
+						"price": d[3] ? d[3].qText : '',
+						"mera1": d[4] ? new Block(mNames[0],d[4].qText, false) : '',
+						"mera2": d[5] ? new Block(mNames[1],d[5].qText, false) : '',
+						"mera3": d[6] ? new Block(mNames[2],d[6].qText, false) : '',
+						"mera4": d[7] ? new Block(mNames[3],d[7].qText, false): '',
+						"mera5": d[8] ? new Block(mNames[4],d[8].qText, false) : '',
+						"mera6": d[9] ? new Block(mNames[5],d[9].qText, false) : '',
+						"mera7": d[10] ? new Block(mNames[6],d[10].qText, false) : '',
+						"mera8": d[11] ? new Block(mNames[7],d[11].qText, false) : '',
+						"mera9": d[12] ? new Block(mNames[8],d[12].qText, false) : '',
+						"mera10": d[13] ? new Block(mNames[9],d[13].qText, false) : '',
+						"mera11": d[14] ? new Block(mNames[10],d[14].qText, false) : '',
+						"mera12": d[15] ? new Block(mNames[11],d[15].qText, false) : ''
 					};
 				});
 
-				console.log(data);
 				var table = '<div class="container"><div class="container__wrapper">';
 
 					
 
 				data.forEach(function(element, i) {
-
-					let mera1 = `<h1>${element.mera1}</h1>`,
-						mera2 = `<h1>${element.mera2}</h1>`,
-						mera3 = `<h1>${element.mera3}</h1>`,
-						mera4 = `<h1>${element.mera4}</h1>`,
-						mera5 = `<h1>${element.mera5}</h1>`,
-						mera6 = `<h1>${element.mera6}</h1>`,
-						mera7 = `<h1>${element.mera7}</h1>`,
-						mera8 = `<h1>${element.mera8}</h1>`,
-						mera9 = `<h1>${element.mera9}</h1>`,
-						mera10 = `<h1>${element.mera10}</h1>`,
-						mera11 = `<h1>${element.mera11}</h1>`,
-						mera12 = `<h1>${element.mera12}</h1>`;
 
 					let indexForOutput= i + 1;
 					table += `<section class="elem elem__${i}" >
@@ -100,24 +110,46 @@ define( ['text!./style.css',
 
 								<div class="elem__list-container">
 									<div class="list list--selected">
-										${mera1}
-										${mera2}
-										${mera3}
-										${mera4}
+										<!--1-->
+										${element.mera1.print()}
+										
+										<!-- 2 -->
+										${element.mera2.print()}
+										
+										<!-- 3 -->
+										${element.mera3.print()}
+										
+										<!-- 4 -->
+										${element.mera4.print()}
+										
 									</div>
 									<!-- 2 -->
 									<div class="list">
-										${mera5}
-										${mera6}
-										${mera7}
-										${mera8}
-									</div>
+										<!--5-->
+										${element.mera5.print()}
+										
+										<!--6-->
+										${element.mera6.print()}
+										
+										<!--7-->
+										${element.mera7.print()}
+										
+										<!--8-->
+										${element.mera8.print()}
+										</div>
 									<!-- 3 -->
 									<div class="list">
-										${mera9}
-										${mera10}
-										${mera11}
-										${mera12}
+										<!--9-->
+										${element.mera9.print()}
+										
+										<!--10-->
+										${element.mera10.print()}
+										
+										<!--11-->
+										${element.mera11.print()}
+										
+										<!--12-->
+										${element.mera12.print()}
 									</div>
 						
 								</div>

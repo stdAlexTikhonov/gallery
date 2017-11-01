@@ -3,7 +3,7 @@ define([], function () {
 
     var dimensions = { 
         uses: "dimensions",
-        min: 1
+        min: 4
      };
 
     var measures = { 
@@ -36,6 +36,7 @@ define([], function () {
     var addons = { uses: "addons" };
 
     var tab1 = {
+        type: "items",
         label: "Таб1",
         items: {
             tab_title: {
@@ -45,25 +46,25 @@ define([], function () {
                 defaultValue: "Таб1" 
             },
             mera1: {
-                ref: "props.tab1_title1",  
+                ref: "props.mera0",  
                 label: "Мера1",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera2: {
-                ref: "props.tab1_title2",  
+                ref: "props.mera1",  
                 label: "Мера2",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera3: {
-                ref: "props.tab1_title3",  
+                ref: "props.mera2",  
                 label: "Мера3",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera4: {
-                ref: "props.tab1_title4",  
+                ref: "props.mera3",  
                 label: "Мера4",  
                 type: "string",  
                 defaultValue: "" 
@@ -74,7 +75,7 @@ define([], function () {
 
     var tab2 = {
         label: "Таб2",
-        component: "expandable-items",
+        type: "items",
         items: {
             tab_title: {
                 ref: "props.tab_title2",  
@@ -83,25 +84,25 @@ define([], function () {
                 defaultValue: "Таб2" 
             },
             mera1: {
-                ref: "props.tab2_title1",  
+                ref: "props.mera4",  
                 label: "Мера1",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera2: {
-                ref: "props.tab2_title2",  
+                ref: "props.mera5",  
                 label: "Мера2",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera3: {
-                ref: "props.tab3_title3",  
+                ref: "props.mera6",  
                 label: "Мера3",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera4: {
-                ref: "props.taи4_title4",  
+                ref: "props.mera7",  
                 label: "Мера4",  
                 type: "string",  
                 defaultValue: "" 
@@ -112,7 +113,7 @@ define([], function () {
 
     var tab3 = {
         label: "Таб3",
-        component: "expandable-items",
+        type: "items",
         items: {
             tab_title: {
                 ref: "props.tab_title3",  
@@ -121,25 +122,25 @@ define([], function () {
                 defaultValue: "Таб3" 
             },
             mera1: {
-                ref: "props.tab3_title1",  
+                ref: "props.mera8",  
                 label: "Мера1",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera2: {
-                ref: "props.tab3_title2",  
+                ref: "props.mera9",  
                 label: "Мера2",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera3: {
-                ref: "props.tab3_title3",  
+                ref: "props.mera10",  
                 label: "Мера3",  
                 type: "string",  
                 defaultValue: "" 
             },
             mera4: {
-                ref: "props.tab3_title4",  
+                ref: "props.mera11",  
                 label: "Мера4",  
                 type: "string",  
                 defaultValue: "" 
@@ -147,20 +148,7 @@ define([], function () {
         }
 
     };
-        
-    // var tab_title2 = {
-    //     label:"Таб_имя2",
-    //     ref: "props.tab_title2",
-    //     type: "string",
-    //     defaultValue: 'Таб2'
-    // };
-        
-    // var tab_title3 = {
-    //     label:"Таб_имя3",
-    //     ref: "props.tab_title3",
-    //     type: "string",
-    //     defaultValue: 'Таб3'
-    // };
+
     
     var currency = {
         label:"Валюта",

@@ -1,0 +1,299 @@
+<section class="elem elem__${i}" >
+    <div class="elem__img-block">
+        <img src="${element.image_url}" alt="" class="elem__img">
+        <span class="elem__counter">${indexForOutput}</span> 
+    </div>
+    <div class="elem__info-block">
+        <p class="elem__article">${element.article}</p>
+        <p class="elem__name">${element.title}</p>
+        <p class="elem__cost">
+            ${element.price}${layout.props.currency}
+        </p>
+    </div>
+    
+    <input type="radio" id="list-1${i}" name="list" class="list__control-radio" checked>
+    <input type="radio" id="list-2${i}" name="list" class="list__control-radio">
+    <input type="radio" id="list-3${i}" name="list" class="list__control-radio">
+
+    <div class="list__control-block">
+        <label for="list-1${i}" class="list__control list__control--selected">${layout.props.tab_title1}</label>
+        <label for="list-2${i}" class="list__control">${layout.props.tab_title2}</label>
+        <label for="list-3${i}" class="list__control">${layout.props.tab_title3}</label>
+    </div>
+
+    <div class="elem__list-container">
+
+        <!-- 1 -->
+        <div class="list list--selected">
+            <!-- 1 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera1}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title1}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera1}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title1}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera1}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+                    <!-- 2 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera2}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title2}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera2}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title2}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera2}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+
+            <!-- 3 -->
+                        <div class="list__skale-block">
+                <p class="list__percent">${element.mera3}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title3}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera3}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title3}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera3}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera4}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title4}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera4}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title4}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera4}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+        </div>
+
+       <!-- 2 -->
+               
+        <div class="list">
+           <!-- 1 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera5}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title1}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera5}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title1}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera5}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+                    <!-- 2 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera6}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title2}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera6}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title2}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera6}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+
+            <!-- 3 -->
+                        <div class="list__skale-block">
+                <p class="list__percent">${element.mera7}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title3}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera7}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title3}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera7}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera8}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title4}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera8}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title4}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera8}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 -->
+ 
+        <div class="list">
+           <!-- 1 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera9}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title1}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera9}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title1}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera9}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+                    <!-- 2 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera10}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title2}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera10}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title2}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera10}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+
+            <!-- 3 -->
+                        <div class="list__skale-block">
+                <p class="list__percent">${element.mera11}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title3}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera11}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title3}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera11}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="list__skale-block">
+                <p class="list__percent">${element.mera12}
+                    <!-- <span class="span list__percent-symbol">%</span> -->
+                </p>
+                <p class="list__label">${layout.props.tab1_title4}</p>
+                <div class="list__skale-container">
+                    <div class="list__skale-value list__skale-value--green" style="width: ${element.mera12}"></div>
+                </div>
+            </div>
+
+            <div class="list__data-block">
+                <div class="list__data">
+                    <p class="list__label">${layout.props.tab1_title4}</p>
+                </div>
+
+                <div class="list__data">
+                    <p class="list__value">${element.mera12}</p>
+                    <!-- <p class="list__label"></p> -->
+                </div>
+            </div>
+        </div>
+     
+    </div>
+    </section>

@@ -1,0 +1,354 @@
+/* body {
+  display: flex;
+  font-family: 'Calibri', sans-serif;
+} */
+
+.qv-object-Gallery div.qv-object-content {
+	overflow: auto;
+}
+
+p {
+  margin: 0;
+}
+
+.container {
+  height: calc(100vh - 20px);
+}
+
+.container__wrapper {
+  margin: auto;
+  max-width: 1020px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 18px 2px; 
+  background: #F4F7FA;
+  box-sizing: border-box;
+  border: 2px solid darkslategrey;
+}
+
+.elem {
+  width: 230px;
+  height: 550px;
+  margin: 14px 8px;
+  background: #fff;
+  border: 1px solid #D8DADE;
+  border-radius: 5px;
+}
+
+.elem__img-block {
+  position: relative;
+  height: 276px;
+  width: auto;
+}
+
+.elem__counter {
+  position: absolute;
+  top: 5px;
+  left: 7px;
+  width: 19px;
+  height: 19px;
+  background: rgba(128, 128, 128, 0.5);
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  line-height: 19px;
+  border-radius: 3px;
+}
+
+.elem__info-block {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 16px;
+}
+
+.elem__article {
+  margin-bottom: 4px;
+  font-size: 9px;
+  line-height: 1;
+  color: #A5AEBA;
+}
+
+.elem__name {
+  margin-bottom: 10px;
+  font-size: 17px;
+  line-height: 1;
+  color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.elem__cost {
+  font-size: 17px;
+  line-height: 1;
+  color: #A5AEBA;
+  text-transform: uppercase;
+}
+
+.elem__sale-note {
+  display: inline-block;
+  height: 12px;
+  line-height: 12px;
+  margin-left: 6px;
+  padding: 0 3px;
+  font-size: 10px;
+  color: #fff;
+  background: #FA5F60;
+  border-radius: 3px;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+.list__control-block {
+  display: flex;
+  padding: 0 16px;
+  margin-bottom: 9px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.list__control-radio {
+    display: none;  
+}
+
+.list__control {
+  position: relative;
+  width: 33.33%;
+  line-height: 26px;
+  font-size: 10px;
+  text-align: center;
+  color: #A5AEBA;
+  border: none;
+  background: #fff;
+  text-transform: uppercase;
+}
+
+.list__control:focus,
+.list__control:active {
+  outline: none;
+}
+
+.elem__list-container {
+  padding: 0 16px;
+}
+
+.list {
+    display: none;  
+  padding-bottom: 12px;
+}
+
+.list--selected {
+  display: block;
+}
+
+.list__control-radio:checked + label {
+  color: #000;
+}
+
+.list__control--selected:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #1DA8ED;
+}
+
+.list__percent {
+  display: inline-block;
+  margin-bottom: 3px;
+  font-size: 24px;
+  line-height: 24px;
+  color: #5A6779;
+}
+
+.list__percent-symbol {
+  font-size: 17px;
+  line-height: 1;
+  color: #5A6779;
+  vertical-align: top;
+}
+
+.list__percent + .list__label {
+  vertical-align: baseline;
+}
+
+.list__label {
+  display: inline-block;
+  font-size: 11px;
+  line-height: 1;
+  color: #A5AEBA;
+  text-transform: uppercase;
+}
+
+.list__data-block {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+.list__data {
+  display: flex;
+  flex-direction: column;
+}
+
+.list__data + .list__data > .list__value {
+  text-align: right;
+}
+
+.list__value {
+  margin-bottom: 5px;
+  color: #5A6779;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.list__skale-block {
+  margin-bottom: 6px;
+}
+.list__skale-block + .list__skale-block {
+  margin-top: 10px;
+}
+
+.list__skale-container {
+  position: relative;
+  width: 100%;
+  height: 5px;
+  background: #E2E7EC;
+  border-radius: 3px;
+}
+
+.list__skale-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 5px;
+  border-radius: 3px;
+}
+
+.list__skale-value--green {
+  background: #A0D468;
+}
+
+.list__skale-value--blue {
+  background: #1DA8ED;
+}
+
+.list__skale-value--pink {
+  background: #EC87C0;
+}
+
+.mark {
+  padding-left: 16px;
+}
+
+.mark:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+}
+
+.mark--green:before {
+  background: #A0D468;
+}
+
+.mark--blue:before {
+  background: #1DA8ED;
+}
+
+.list__tag-block {
+  height: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.list__tag-icon {
+  position: relative;
+  display: inline-block;
+  padding-left: 16px;
+  font-size: 11px;
+  line-height: 1;
+  color: #A5AEBA;
+  text-transform: uppercase;
+}
+
+.list__tag-icon:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 12px;
+  background-size: contain;
+}
+
+.list__tag-icon--calendar:before {
+  background: url('../extensions/Gallery/img/calendar-icon.png');
+}
+
+.list__tag-icon--store:before {
+  background: url('../extensions/Gallery/img/store-icon.png');
+}
+
+.list__tag-container {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+
+.list__tag {
+  display: inline-block;
+  margin-left: 3px;
+  line-height: 12px;
+  font-size: 9px;
+  padding: 0 4px;
+  color: #fff;
+  background: #C7CDD4;
+  text-transform: uppercase;
+  max-width: 30px;
+  border-radius: 2px;
+}
+
+.list__tag--dark {
+  background: #8E9AA9;
+}
+
+.list__tag-value {
+  margin-left: 8px;
+}
+
+.list.list--selected {
+  display: block;
+}
+/* #list-2:checked ~ .elem__list-container .list:nth-of-type(2) {
+  display: block;
+}
+#list-3:checked ~ .elem__list-container .list:last-of-type {
+  display: block;
+} */
+
+
+.list__control.list__control--selected {
+  color: #929aa7;
+  font-weight: bold;
+}
+
+/* #list-2:checked ~ .list__control-block .list__control:nth-of-type(2) {
+  border-bottom: 2px solid #6dc7f4;
+  color: #929aa7;
+  font-weight: bold;
+}
+
+#list-3:checked ~ .list__control-block .list__control:last-of-type {
+  border-bottom: 2px solid #6dc7f4;
+  color: #929aa7;
+  font-weight: bold;
+} */

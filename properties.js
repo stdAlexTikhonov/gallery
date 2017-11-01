@@ -156,6 +156,7 @@ define([], function () {
         type: "string",
         defaultValue: 'руб.'
     }
+    
 
     var appearancePanel = { 
         uses: "settings",

@@ -12,16 +12,29 @@ define( ['text!./style.css',
 		}
 		
 		Block.prototype.print = function() {
-			return `<div class="list__data-block">
-									<div class="list__data">
-											<p class="list__label">${this.measureName}</p>
-									</div>
+			if (this.bar) {
+				return `<div class="list__skale-block">
+		                <p class="list__percent">${this.value}
+		                    <!-- <span class="span list__percent-symbol">%</span> -->
+		                </p>
+		                <p class="list__label">${this.measureName}</p>
+		                <div class="list__skale-container">
+		                    <div class="list__skale-value list__skale-value--green" style="width: ${this.value}"></div>
+		                </div>
+		            </div>`;
+			} else {
+				return  `<div class="list__data-block">
+											<div class="list__data">
+													<p class="list__label">${this.measureName}</p>
+											</div>
 
-									<div class="list__data">
-											<p class="list__value">${this.value}</p>
-											<!-- <p class="list__label"></p> -->
-									</div>
-							</div>`;
+											<div class="list__data">
+													<p class="list__value">${this.value}</p>
+													<!-- <p class="list__label"></p> -->
+											</div>
+									</div>`;
+			}
+
 		}
 
     return {
@@ -44,7 +57,7 @@ define( ['text!./style.css',
 
 				
 				let mNames = mInfo.map((item,i) => {
-					return layout.props['mera' + i] ? layout.props['mera' + i] : mInfo[i].qFallbackTitle;
+					return { name: layout.props['mera' + i] ? layout.props['mera' + i] : mInfo[i].qFallbackTitle, bar: item.bar };
 				});
 				
 				
@@ -63,18 +76,18 @@ define( ['text!./style.css',
 						"article":  d[1] ? d[1].qText : '',
 						"title":  d[2] ? d[2].qText : '',
 						"price": d[3] ? d[3].qText : '',
-						"mera1": d[4] ? new Block(mNames[0],d[4].qText, false) : '',
-						"mera2": d[5] ? new Block(mNames[1],d[5].qText, false) : '',
-						"mera3": d[6] ? new Block(mNames[2],d[6].qText, false) : '',
-						"mera4": d[7] ? new Block(mNames[3],d[7].qText, false): '',
-						"mera5": d[8] ? new Block(mNames[4],d[8].qText, false) : '',
-						"mera6": d[9] ? new Block(mNames[5],d[9].qText, false) : '',
-						"mera7": d[10] ? new Block(mNames[6],d[10].qText, false) : '',
-						"mera8": d[11] ? new Block(mNames[7],d[11].qText, false) : '',
-						"mera9": d[12] ? new Block(mNames[8],d[12].qText, false) : '',
-						"mera10": d[13] ? new Block(mNames[9],d[13].qText, false) : '',
-						"mera11": d[14] ? new Block(mNames[10],d[14].qText, false) : '',
-						"mera12": d[15] ? new Block(mNames[11],d[15].qText, false) : ''
+						"mera1": d[4] ? new Block(mNames[0].name,d[4].qText, mNames[0].bar) : '',
+						"mera2": d[5] ? new Block(mNames[1].name,d[5].qText, mNames[1].bar) : '',
+						"mera3": d[6] ? new Block(mNames[2].name,d[6].qText, mNames[2].bar) : '',
+						"mera4": d[7] ? new Block(mNames[3].name,d[7].qText, mNames[3].bar): '',
+						"mera5": d[8] ? new Block(mNames[4].name,d[8].qText, mNames[4].bar) : '',
+						"mera6": d[9] ? new Block(mNames[5].name,d[9].qText, mNames[5].bar) : '',
+						"mera7": d[10] ? new Block(mNames[6].name,d[10].qText, mNames[6].bar) : '',
+						"mera8": d[11] ? new Block(mNames[7].name,d[11].qText, mNames[7].bar) : '',
+						"mera9": d[12] ? new Block(mNames[8].name,d[12].qText, mNames[8].bar) : '',
+						"mera10": d[13] ? new Block(mNames[9].name,d[13].qText, mNames[9].bar) : '',
+						"mera11": d[14] ? new Block(mNames[10].name,d[14].qText, mNames[10].bar) : '',
+						"mera12": d[15] ? new Block(mNames[11].name,d[15].qText, mNames[11].bar) : ''
 					};
 				});
 

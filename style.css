@@ -17,13 +17,14 @@ p {
 
 .container__wrapper {
   margin: auto;
-  max-width: 1020px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding: 18px 2px; 
   background: #F4F7FA;
   box-sizing: border-box;
-  border: 2px solid darkslategrey;
+  justify-content: center;
+
 }
 
 .elem {
@@ -62,7 +63,7 @@ p {
 
 .elem__article {
   margin-bottom: 4px;
-  font-size: 9px;
+  font-size: 15px;
   line-height: 1;
   color: #A5AEBA;
 }

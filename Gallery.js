@@ -46,7 +46,7 @@ define( ['text!./style.css',
 					qInitialDataFetch: [
 						{
 							qWidth: 16,
-							qHeight: 10
+							qHeight: 40
 						}
 					]
 				}
@@ -100,7 +100,7 @@ define( ['text!./style.css',
 					let indexForOutput= i + 1;
 					table += `<section class="elem elem__${i}" >
 								<div class="elem__img-block">
-									<img src="${element.image_url}" alt="" class="elem__img">
+									<img width="230" height="276" src="${element.image_url}" alt="" class="elem__img">
 									<span class="elem__counter">${indexForOutput}</span> 
 								</div>
 								<div class="elem__info-block">

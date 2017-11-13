@@ -11,23 +11,23 @@ define([], function () {
         min: 1,
         items: {
 
-            bar: {
-                type: "boolean",
-                component: "switch",
-                label: "Индикатор",
-                ref: "qDef.bar",
-                options: [
-                    {
-                        label: "On",
-                        value: true
-                    },
-                    {
-                        label: 'Off',
-                        value: false
-                    }
+            type: {
+                ref: "qDef.type",
+                label: "Тип отображения",
+                type: "integer",
+                component: "dropdown",
 
-                ],
-                defaultValue: false
+                options: [{
+                    value: 0,
+                    label: "BarChart"
+                }, {
+                    value: 1,
+                    label: "Значение"
+                }, {
+                    value: 2,
+                    label: "2 Значения"
+                }],
+                defaultValue: 1
             }
         }
         

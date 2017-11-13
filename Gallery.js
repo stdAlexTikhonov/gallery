@@ -4,15 +4,15 @@ define( ['text!./style.css',
 		$('<style>').html(styleCss).appendTo('head');
 		'use strict';
 		
-		function Block(measureName,value, bar) {
+		function Block(measureName,value, type) {
 			this.value = value;
 			this.measureName = measureName;
-			this.bar = bar;
+			this.type = type;
 			
 		}
 		
 		Block.prototype.print = function() {
-			if (this.bar) {
+			if (this.type === 0) {
 				return `<div class="list__skale-block">
 		                <p class="list__percent">${this.value}
 		                    <!-- <span class="span list__percent-symbol">%</span> -->
@@ -22,42 +22,60 @@ define( ['text!./style.css',
 		                    <div class="list__skale-value list__skale-value--green" style="width: ${this.value}"></div>
 		                </div>
 		            </div>`;
-			} else {
-				return  `<div class="list__data-block">
-											<div class="list__data">
-													<p class="list__label">${this.measureName}</p>
-											</div>
+			}  else if (this.type === 1) {
+						return `<div class="list__data-block">
+							<div class="list__data">
+								<p class="list__label">${this.measureName}</p>
+							</div>
 
-											<div class="list__data">
-													<p class="list__value">${this.value}</p>
-													<!-- <p class="list__label"></p> -->
-											</div>
-									</div>`;
+							<div class="list__data">
+								<p class="list__value">${this.value}</p>
+								<!-- <p class="list__label"></p> -->
+							</div>
+						</div>`;
+			} else {
+					return `<div class="list__data-block">
+								<div class="list__data">
+									<p class="list__value">${this.value.val2} ${this.measureName.name2}</p>
+									<p class="list__label">${this.measureName.name1}</p>
+								</div>
+
+								<div class="list__data">
+									<p class="list__value">${this.value.val1}</p>
+									<p class="list__label"></p>
+								</div>
+							</div>`;
 			}
+				
+			
 
 		}
 
     return {
       definition: properties,
-			initialProperties: {
-				qHyperCubeDef: {
-					qDimensions: [],
-					qMeasures: [],
-					qInitialDataFetch: [
-						{
-							qWidth: 16,
-							qHeight: 40
-						}
-					]
-				}
-			},
+		initialProperties : {
+		version : 1.0,
+		qHyperCubeDef : {
+			qDimensions : [],
+			qMeasures : [],
+			qInitialDataFetch : [{
+				qWidth : 16,
+				qHeight : 40
+			}]
+		}
+		},
+		snapshot : {
+			canTakeSnapshot : true
+		},
 			paint: function ( $element, layout ) {
+				let self = this;
 				$element.empty();
 				let mInfo = layout.qHyperCube.qMeasureInfo;
+				let id = layout.qInfo.qId;
 
 				
 				let mNames = mInfo.map((item,i) => {
-					return { name: layout.props['mera' + i] ? layout.props['mera' + i] : mInfo[i].qFallbackTitle, bar: item.bar };
+					return { name: layout.props['mera' + i] ? layout.props['mera' + i] : mInfo[i].qFallbackTitle, type: item.type };
 				});
 				
 				
@@ -68,27 +86,40 @@ define( ['text!./style.css',
 				
 				var qMatrix = layout.qHyperCube.qDataPages[0].qMatrix;
 
-
+			
 				data = qMatrix.map(function (d, i) {
+					let measureNames = 0,
+						measureTypes = 0,
+						measureVals = 0,
+						x = 0;
 
-					return {
-						"image_url": d[0] ? d[0].qText : '',
-						"article":  d[1] ? d[1].qText : '',
-						"title":  d[2] ? d[2].qText : '',
-						"price": d[3] ? d[3].qText : '',
-						"mera1": d[4] ? new Block(mNames[0].name,d[4].qText, mNames[0].bar) : new Block('','',false),
-						"mera2": d[5] ? new Block(mNames[1].name,d[5].qText, mNames[1].bar) : new Block('','',false),
-						"mera3": d[6] ? new Block(mNames[2].name,d[6].qText, mNames[2].bar) : new Block('','',false),
-						"mera4": d[7] ? new Block(mNames[3].name,d[7].qText, mNames[3].bar): new Block('','',false),
-						"mera5": d[8] ? new Block(mNames[4].name,d[8].qText, mNames[4].bar) : new Block('','',false),
-						"mera6": d[9] ? new Block(mNames[5].name,d[9].qText, mNames[5].bar) : new Block('','',false),
-						"mera7": d[10] ? new Block(mNames[6].name,d[10].qText, mNames[6].bar) : new Block('','',false),
-						"mera8": d[11] ? new Block(mNames[7].name,d[11].qText, mNames[7].bar) : new Block('','',false),
-						"mera9": d[12] ? new Block(mNames[8].name,d[12].qText, mNames[8].bar) : new Block('','',false),
-						"mera10": d[13] ? new Block(mNames[9].name,d[13].qText, mNames[9].bar) : new Block('','',false),
-						"mera11": d[14] ? new Block(mNames[10].name,d[14].qText, mNames[10].bar) : new Block('','',false),
-						"mera12": d[15] ? new Block(mNames[11].name,d[15].qText, mNames[11].bar) : new Block('','',false)
+					var itog = {
+						"dataIndex": d[0] ? d[0].qElemNumber : '',
+						"image_url": d[x++] ? d[measureVals++].qText : '',
+						"article":  d[x++] ? d[measureVals++].qText : '',
+						"title":  d[x++] ? d[measureVals++].qText : '',
+						"price": d[x++] ? d[measureVals++].qText : ''
 					};
+
+					while (d[x]) {
+						if (mNames[measureNames].type === 2) {
+							itog['block' + (measureNames + 1)] = new Block({
+																				name1: mNames[measureNames++].name,
+																				name2: mNames[measureNames].name
+																			}, 
+																			{
+																				val1: d[measureVals++].qText,
+																				val2: d[measureVals++].qText 
+																			}, mNames[measureNames - 1].type);
+							x++;
+							
+						} else {
+							itog['block' + (measureNames + 1)] = new Block(mNames[measureNames].name, d[measureVals++].qText, mNames[measureNames++].type);
+						}
+						x++;
+					}
+
+					return itog;
 				});
 
 				var table = '<div class="container"><div class="container__wrapper">';
@@ -100,7 +131,7 @@ define( ['text!./style.css',
 					let indexForOutput= i + 1;
 					table += `<section class="elem elem__${i}" >
 								<div class="elem__img-block">
-									<img width="230" height="276" src="${element.image_url}" alt="" class="elem__img">
+									<img class="img${id}" data-index=${element.dataIndex} width="230" height="276" src="${element.image_url}" alt="" class="elem__img">
 									<span class="elem__counter">${indexForOutput}</span> 
 								</div>
 								<div class="elem__info-block">
@@ -124,45 +155,45 @@ define( ['text!./style.css',
 								<div class="elem__list-container">
 									<div class="list list--selected">
 										<!--1-->
-										${element.mera1.print()}
+										${element.block1 ? element.block1.print() : ''}
 										
 										<!-- 2 -->
-										${element.mera2.print()}
+										${element.block2 ? element.block2.print() : ''}
 										
 										<!-- 3 -->
-										${element.mera3.print()}
+										${element.block3 ? element.block3.print() : ''}
 										
 										<!-- 4 -->
-										${element.mera4.print()}
+										${element.block4 ? element.block4.print() : ''}
 										
 									</div>
 									<!-- 2 -->
 									<div class="list">
 										<!--5-->
-										${element.mera5.print()}
+										${element.block5 ? element.block5.print() : ''}
 										
 										<!--6-->
-										${element.mera6.print()}
+										${element.block6 ? element.block6.print() : ''}
 										
 										<!--7-->
-										${element.mera7.print()}
+										${element.block7 ? element.block7.print() : ''}
 										
 										<!--8-->
-										${element.mera8.print()}
+										${element.block8 ? element.block8.print() : ''}
 										</div>
 									<!-- 3 -->
 									<div class="list">
 										<!--9-->
-										${element.mera9.print()}
+										${element.block9 ? element.block9.print() : ''}
 										
 										<!--10-->
-										${element.mera10.print()}
+										${element.block10 ? element.block10.print() : ''}
 										
 										<!--11-->
-										${element.mera11.print()}
+										${element.block11 ? element.block11.print() : ''}
 										
 										<!--12-->
-										${element.mera12.print()}
+										${element.block12 ? element.block12.print() : ''}
 									</div>
 						
 								</div>
@@ -172,13 +203,19 @@ define( ['text!./style.css',
 				table += "</div></div>";
 				$element.append(table);
 
-				$('.list__control').on('click', function(e) {
+				$element.find('.list__control').on('click', function(e) {
 					let index = $(this).parent().parent().index();
 					let innerIndex = $(this).index() + 1;
 					$(`.elem__${index}`).find('.list__control').removeClass('list__control--selected');
 					$(`.elem__${index}`).find('.list').removeClass('list--selected');
 					$(`.elem__${index}`).find(`.list__control:nth-of-type(${innerIndex})`).addClass('list__control--selected');
 					$(`.elem__${index}`).find(`.list:nth-of-type(${innerIndex})`).addClass('list--selected');
+				});
+
+				$element.find(`.img${id}`).on('click', function(e) {
+					
+					let num = parseInt(e.target.getAttribute('data-index'),10);
+					self.selectValues(0, [num], true);
 				});
 			}
         };

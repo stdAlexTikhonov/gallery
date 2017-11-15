@@ -3,7 +3,7 @@ define([], function () {
 
     var dimensions = { 
         uses: "dimensions",
-        min: 4
+        min: 3
      };
 
     var measures = { 

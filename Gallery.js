@@ -98,7 +98,8 @@ define( ['text!./style.css',
 						"image_url": d[x++] ? d[measureVals++].qText : '',
 						"article":  d[x++] ? d[measureVals++].qText : '',
 						"title":  d[x++] ? d[measureVals++].qText : '',
-						"price": d[x++] ? d[measureVals++].qText : ''
+						"price": d[x++] ? d[measureVals++].qText : '',
+						"discount": d[x++] ? d[measureVals++].qText: ''
 					};
 
 					while (d[x]) {
@@ -128,7 +129,7 @@ define( ['text!./style.css',
 
 				data.forEach(function(element, i) {
 
-					let indexForOutput= i + 1;
+					let indexForOutput = i + 1;
 					table += `<section class="elem elem__${i}" >
 								<div class="elem__img-block">
 									<img class="img${id}" data-index=${element.dataIndex} width="230" height="276" src="${element.image_url}" alt="" class="elem__img">
@@ -139,6 +140,7 @@ define( ['text!./style.css',
 									<p class="elem__name">${element.title}</p>
 									<p class="elem__cost">
 										${element.price}${layout.props.currency}
+										<span class="elem__sale-note">${element.discount} off</span>
 									</p>
 								</div>
 								

@@ -79,16 +79,11 @@ define( ['text!./style.css',
 				});
 				
 				
-				let blocks = mNames.map(item => {
-					
-				})
-			
-				
 				var qMatrix = layout.qHyperCube.qDataPages[0].qMatrix;
 
 			
 				data = qMatrix.map(function (d, i) {
-					let measureNames = 0,
+					let measureNames = 2,
 						measureTypes = 0,
 						measureVals = 0,
 						x = 0;

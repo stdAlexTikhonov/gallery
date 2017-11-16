@@ -86,6 +86,7 @@ define( ['text!./style.css',
 					let measureNames = 2,
 						measureTypes = 0,
 						measureVals = 0,
+						blockIndex = 1
 						x = 0;
 
 					var itog = {
@@ -94,12 +95,13 @@ define( ['text!./style.css',
 						"article":  d[x++] ? d[measureVals++].qText : '',
 						"title":  d[x++] ? d[measureVals++].qText : '',
 						"price": d[x++] ? d[measureVals++].qText : '',
-						"discount": d[x++] ? d[measureVals++].qText: ''
+						"discount": d[x++] ? d[measureVals++].qText : ''
 					};
-
+			
 					while (d[x]) {
 						if (mNames[measureNames].type === 2) {
-							itog['block' + (measureNames + 1)] = new Block({
+							// itog['block' + (measureNames + 1)] = mNames[measureNames].name + d[measureVals++].qText + 'type2';
+							itog['block' + (measureNames - 1)] = new Block({
 																				name1: mNames[measureNames++].name,
 																				name2: mNames[measureNames].name
 																			}, 
@@ -108,11 +110,13 @@ define( ['text!./style.css',
 																				val2: d[measureVals++].qText 
 																			}, mNames[measureNames - 1].type);
 							x++;
-							
+							// measureNames++;
 						} else {
-							itog['block' + (measureNames + 1)] = new Block(mNames[measureNames].name, d[measureVals++].qText, mNames[measureNames++].type);
+							//itog['block' + (measureNames + 1)] = mNames[measureNames].name + d[measureVals++].qText + 'type1';
+							itog['block' + (measureNames - 1)] = new Block(mNames[measureNames].name, d[measureVals++].qText, mNames[measureNames].type);
 						}
 						x++;
+						measureNames++;
 					}
 
 					return itog;
@@ -120,7 +124,7 @@ define( ['text!./style.css',
 
 				var table = '<div class="container"><div class="container__wrapper">';
 
-					
+				console.log(data);
 
 				data.forEach(function(element, i) {
 
